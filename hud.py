@@ -2,9 +2,6 @@ import cv2
 import time
 import numpy as np
 
-# ===================================
-# GLOBAL VARIABLES
-# ===================================
 ix, iy = -1, -1
 bbox = None
 tracker = None
@@ -16,9 +13,6 @@ box_size = 90
 vision_mode = "NORMAL"  # "IR" ou "NORMAL"
 
 
-# =======================================
-#           MOUSE CALLBACK
-# =======================================
 def mouse_callback(event, x, y, flags, param):
     global ix, iy, bbox, tracker, tracking, frame
 
@@ -36,9 +30,6 @@ def mouse_callback(event, x, y, flags, param):
         tracking = True
 
 
-# =========================
-#      CREATE TRACKER
-# =========================
 def create_tracker():
     try:
         return cv2.legacy.TrackerCSRT_create()
@@ -46,9 +37,6 @@ def create_tracker():
         return cv2.TrackerCSRT_create()
 
 
-# =========================
-#     TEXT WITH BORDER
-# =========================
 def draw_text_with_outline(frame, text, pos, font, scale, color, thickness):
     x, y = pos
 
@@ -59,9 +47,6 @@ def draw_text_with_outline(frame, text, pos, font, scale, color, thickness):
                 font, scale, color, thickness, cv2.LINE_AA)
 
 
-# =========================
-#   SEEKER EFFECT (IR)
-# =========================
 def apply_ir_effect(crop):
     gray = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
 
@@ -73,9 +58,6 @@ def apply_ir_effect(crop):
     return ir
 
 
-# =========================
-#   APPLY VISION MODE
-# =========================
 def process_seeker_view(crop):
     global vision_mode
 
@@ -85,9 +67,6 @@ def process_seeker_view(crop):
         return crop
 
 
-# =========================
-#        DRAW HUD
-# =========================
 def draw_hud(frame, bbox, success, clean_frame):
     h, w = frame.shape[:2]
     color = (0, 255, 0)
@@ -147,9 +126,6 @@ def draw_hud(frame, bbox, success, clean_frame):
                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1)
 
 
-# =========================
-#      DRAW TEXT HUD
-# =========================
 def draw_text(frame):
     h, w = frame.shape[:2]
     color = (0, 255, 0)
@@ -185,7 +161,7 @@ def draw_text(frame):
     draw_text_with_outline(frame, "TEST SETTINGS", (w-260, 20),
                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1)
 
-    # 🔥 NOVO: mostrar modo de visão
+
     draw_text_with_outline(frame, f"VISION MODE: {vision_mode}",
                            (w-260, 40),
                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1)
@@ -197,7 +173,7 @@ def draw_text(frame):
 
 
 # =========================
-# MAIN
+#           MAIN
 # =========================
 def main():
     global frame, tracker, bbox, tracking, vision_mode
@@ -237,7 +213,7 @@ def main():
             tracker = None
             bbox = None
 
-        # TOGGLE VISION
+        # TOGGLE VISION (experimental)
         elif key == ord('v'):
             if vision_mode == "NORMAL":
                 vision_mode = "IR"
