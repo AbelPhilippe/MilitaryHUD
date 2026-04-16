@@ -66,7 +66,7 @@ def process_seeker_view(crop):
     else:
         return crop
 
-
+# =====================================================================================
 def draw_hud(frame, bbox, success, clean_frame):
     h, w = frame.shape[:2]
     color = (0, 255, 0)
@@ -124,7 +124,7 @@ def draw_hud(frame, bbox, success, clean_frame):
         draw_text_with_outline(frame, "Target XY: - -",
                                (w-260, 60),
                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1)
-
+# =====================================================================================
 
 def draw_text(frame):
     h, w = frame.shape[:2]
