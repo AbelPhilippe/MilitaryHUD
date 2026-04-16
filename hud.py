@@ -10,7 +10,7 @@ frame = None
 klase = "default"
 
 box_size = 90
-vision_mode = "NORMAL"  # "IR" ou "NORMAL"
+vision_mode = "NORMAL"  # "IR" or "NORMAL"
 
 
 def mouse_callback(event, x, y, flags, param):
