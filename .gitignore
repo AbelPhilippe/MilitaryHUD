@@ -47,7 +47,6 @@ env/
 venv/
 ENV/
 venv/*
-*.mp4
 *.venv
 venv
 

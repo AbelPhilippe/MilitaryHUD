@@ -10,6 +10,7 @@ bbox = None
 tracker = None
 tracking = False
 frame = None
+klase = "default"
 
 box_size = 90
 vision_mode = "NORMAL"  # "IR" ou "NORMAL"
@@ -166,7 +167,7 @@ def draw_text(frame):
     draw_text_with_outline(frame, "TARGET SELECTOR", (10, 30),
                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1)
 
-    draw_text_with_outline(frame, "Klase: a", (10, 50),
+    draw_text_with_outline(frame, f"Klase: {klase}", (10, 50),
                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1)
 
     draw_text_with_outline(frame, "TARGET INPUT", (10, 100),
