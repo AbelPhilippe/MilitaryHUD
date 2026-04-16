@@ -1,2 +1,2 @@
-# MilitaryHUD
-A visual interface model focused on military applications.
+# MILITARY HUD
+
