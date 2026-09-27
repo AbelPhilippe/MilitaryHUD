@@ -73,11 +73,9 @@ def draw_hud(frame, bbox, success, clean_frame):
 
     cx, cy = w // 2, h // 2
 
-    # CROSSHAIR CENTRAL
     cv2.line(frame, (cx-80, cy), (cx+80, cy), color, 1)
     cv2.line(frame, (cx, cy-80), (cx, cy+80), color, 1)
 
-    # CENTRAL BOX
     size = 25
     cv2.rectangle(frame, (cx-size, cy-size), (cx+size, cy+size), color, 1)
 
@@ -87,7 +85,6 @@ def draw_hud(frame, bbox, success, clean_frame):
         tx = x + bw // 2
         ty = y + bh // 2
 
-        # DOTTED BOX
         for i in range(x, x+bw, 10):
             cv2.line(frame, (i, y), (i+5, y), color, 1)
             cv2.line(frame, (i, y+bh), (i+5, y+bh), color, 1)
@@ -96,16 +93,13 @@ def draw_hud(frame, bbox, success, clean_frame):
             cv2.line(frame, (x, i), (x, i+5), color, 1)
             cv2.line(frame, (x+bw, i), (x+bw, i+5), color, 1)
 
-        # TARGET CROSSHAIR
         cv2.line(frame, (tx-20, ty), (tx+20, ty), color, 1)
         cv2.line(frame, (tx, ty-20), (tx, ty+20), color, 1)
 
-        # TARGET DATA
         draw_text_with_outline(frame, f"Target XY: {tx}, {ty}",
                                (w-260, 60),
                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1)
 
-        # SEEKER VIEW (CLEAN FRAME)
         crop = clean_frame[y:y+bh, x:x+bw]
 
         if crop.size != 0:
@@ -171,10 +165,6 @@ def draw_text(frame):
                                (w//2-120, h-40),
                                cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
 
-
-# =========================
-#           MAIN
-# =========================
 def main():
     global frame, tracker, bbox, tracking, vision_mode
 
