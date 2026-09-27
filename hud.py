@@ -203,8 +203,7 @@ def main():
             tracker = None
             bbox = None
 
-        # TOGGLE VISION (experimental)
-        elif key == ord('v'):
+        elif key == ord('v'): # TOGGLE VISION (experimental)
             if vision_mode == "NORMAL":
                 vision_mode = "IR"
             else:
